@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pymupdf
+supabase
+python-dotenv
+azure-ai-inference
+azure-identity
