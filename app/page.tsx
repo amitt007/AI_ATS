@@ -75,65 +75,70 @@ export default function Home() {
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
                             transition={{ duration: 0.4 }}
-                            className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 min-h-[70vh] items-center"
+                            className="relative min-h-[70vh] pt-12 lg:pt-20"
                         >
                             {/* Left Column: Typography */}
-                            <div className="flex flex-col justify-center order-2 lg:order-1 pt-12 lg:pt-0">
+                            <div className="flex flex-col justify-center">
                                 <div className="inline-flex w-max items-center gap-2 px-3 py-1 rounded-sm border border-zinc-800 bg-zinc-900/50 text-[10px] font-mono font-medium text-zinc-400 uppercase tracking-widest mb-10">
                                     <Activity size={12} />
                                     ATS SCORING ALGORITHM V2.0
                                 </div>
-                                <h1 className="text-[clamp(4rem,10vw,8rem)] font-serif italic font-medium leading-[0.85] tracking-tight mb-8 text-white">
+                                <h1 className="text-[clamp(4rem,10vw,8rem)] font-serif italic font-medium leading-[0.85] tracking-tight mb-8 text-white relative z-0">
                                     Resume<br />
-                                    <span className="text-zinc-500 font-sans not-italic font-black tracking-tighter uppercase text-[clamp(3.5rem,8vw,7rem)] block mt-2">
+                                    <span className="text-zinc-600 font-sans not-italic font-black tracking-tighter uppercase text-[clamp(3.5rem,14vw,11rem)] block mt-2 lg:-ml-2">
                                         Intelligence
                                     </span>
                                 </h1>
-                                <p className="text-zinc-400 font-sans text-sm md:text-base leading-relaxed max-w-xl">
-                                    An elite semantic evaluation engine that dissects your professional narrative
-                                    across formatting, impact, and cross-system compatibility.
-                                </p>
                             </div>
 
-                            {/* Right Column: Upload Box */}
-                            <div className="flex flex-col justify-center w-full max-w-xl mx-auto lg:ml-auto order-1 lg:order-2">
-                                <FileUpload
-                                    file={file}
-                                    onDrop={handleDrop}
-                                    onFileSelect={handleFileSelect}
-                                    maxSize={MAX_FILE_SIZE}
-                                />
+                            <div className="flex flex-col lg:flex-row justify-between items-end gap-12 relative z-10 w-full mt-12 lg:-mt-24 xl:-mt-32 pointer-events-none">
+                                <div className="w-full lg:w-1/2 pointer-events-auto">
+                                    <p className="text-zinc-400 font-sans text-sm md:text-base leading-relaxed max-w-md">
+                                        An elite semantic evaluation engine that dissects your professional narrative
+                                        across formatting, impact, and cross-system compatibility.
+                                    </p>
+                                </div>
 
-                                {error && (
-                                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="w-full editorial-border bg-red-950/20 p-4 md:p-6 mt-6 flex items-start gap-4">
-                                        <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                                        <div className="flex flex-col">
-                                            <span className="font-mono text-xs text-red-500 font-bold uppercase tracking-widest mb-1">Parsing Error</span>
-                                            <span className="font-sans text-sm text-red-400/80">{error}</span>
-                                        </div>
-                                    </motion.div>
-                                )}
+                                {/* Right Column: Upload Box */}
+                                <div className="w-full lg:w-[480px] xl:w-[540px] flex flex-col shrink-0 pointer-events-auto">
+                                    <FileUpload
+                                        file={file}
+                                        onDrop={handleDrop}
+                                        onFileSelect={handleFileSelect}
+                                        maxSize={MAX_FILE_SIZE}
+                                    />
 
-                                <div className="mt-8 flex justify-end">
-                                    <button
-                                        onClick={handleUpload}
-                                        disabled={!file || isLoading}
-                                        className="relative overflow-hidden group border border-zinc-800 hover:border-white text-zinc-300 hover:text-black hover:bg-white px-8 py-4 bg-zinc-950 rounded-sm font-sans font-medium text-sm tracking-wide disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
-                                    >
-                                        <span className="relative z-10 flex items-center gap-3">
-                                            {isLoading ? (
-                                                <>
-                                                    <Loader2 className="w-4 h-4 animate-spin text-zinc-400 group-hover:text-zinc-600" />
-                                                    Evaluating...
-                                                </>
-                                            ) : (
-                                                <>
-                                                    Run Analysis
-                                                    <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                                </>
-                                            )}
-                                        </span>
-                                    </button>
+                                    {error && (
+                                        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="w-full editorial-border bg-red-950/20 p-4 md:p-6 mt-6 flex items-start gap-4">
+                                            <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
+                                            <div className="flex flex-col">
+                                                <span className="font-mono text-xs text-red-500 font-bold uppercase tracking-widest mb-1">Parsing Error</span>
+                                                <span className="font-sans text-sm text-red-400/80">{error}</span>
+                                            </div>
+                                        </motion.div>
+                                    )}
+
+                                    <div className="mt-8 flex justify-end">
+                                        <button
+                                            onClick={handleUpload}
+                                            disabled={!file || isLoading}
+                                            className="relative overflow-hidden group border border-zinc-800 hover:border-white text-zinc-300 hover:text-black hover:bg-white px-8 py-4 bg-zinc-950 rounded-sm font-sans font-medium text-sm tracking-wide disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                                        >
+                                            <span className="relative z-10 flex items-center gap-3">
+                                                {isLoading ? (
+                                                    <>
+                                                        <Loader2 className="w-4 h-4 animate-spin text-zinc-400 group-hover:text-zinc-600" />
+                                                        Evaluating...
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        Run Analysis
+                                                        <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                                    </>
+                                                )}
+                                            </span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
