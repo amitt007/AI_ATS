@@ -42,35 +42,7 @@ export default function Home() {
         setIsLoading(true);
         setError(null);
 
-        // Injecting mock data for UI verification as requested
-        setTimeout(() => {
-            setResult({
-                score: 85,
-                impact_index: 8.2,
-                match_percentage: 88,
-                overall_feedback: "STRONG_MATCH // Systematic alignment detected in structural narrative and core competency mapping.",
-                positives: ["Technical Leadership", "System Architecture", "React/Next.js Expert"],
-                missing_keywords_or_sections: ["Cloud Security", "Distributed Systems", "gRPC"],
-                feedback_tips: ["Enhance impact metrics", "Normalize font hierarchy", "Remove redundant bio"],
-                suggested_improvements: [
-                    {
-                        original_text: "Led the development of a large web application.",
-                        suggested_rewrite: "Architected and delivered a high-scale React system, improving performance by 40% using modern state management.",
-                        reasoning: "QUANTIFIABLE_METRIC_INJECTION // System performance gains should be explicitly stated to establish technical authority.",
-                        potential_score_increase: 12
-                    },
-                    {
-                        original_text: "Helped team with code reviews.",
-                        suggested_rewrite: "Governed codebase integrity through rigorous multi-agent design reviews and automated CI/CD validation protocols.",
-                        reasoning: "NARRATIVE_ELEVATION // Standard operational tasks transformed into governance protocols.",
-                        potential_score_increase: 8
-                    }
-                ]
-            });
-            setIsLoading(false);
-        }, 1500);
 
-        /* Original API Call - Commented out for verification
         const formData = new FormData();
         formData.append("file", file);
 
@@ -91,7 +63,6 @@ export default function Home() {
         } finally {
             setIsLoading(false);
         }
-        */
     };
 
     return (
