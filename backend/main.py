@@ -20,6 +20,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/api/health")
+async def health_check():
+    return {"status": "ok", "message": "Backend is running"}
+
 app.include_router(evaluate_router, prefix="/api")
 
 if __name__ == "__main__":
