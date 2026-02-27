@@ -65,7 +65,7 @@ export default function Home() {
     };
 
     return (
-        <main className="min-h-screen bg-mesh font-sans selection:bg-white selection:text-black">
+        <main className="min-h-screen bg-editorial-dark font-sans selection:bg-white selection:text-black">
             <div className="max-w-7xl mx-auto px-6 py-20 pb-40">
                 <AnimatePresence mode="wait">
                     {!result ? (
@@ -79,18 +79,19 @@ export default function Home() {
                         >
                             {/* Left Column: Typography */}
                             <div className="flex flex-col justify-center order-2 lg:order-1 pt-12 lg:pt-0">
-                                <div className="inline-flex w-max items-center gap-2 px-3 py-1 rounded border border-lime-500/30 bg-lime-500/5 text-[10px] font-mono font-medium text-lime-400 uppercase tracking-widest mb-10">
+                                <div className="inline-flex w-max items-center gap-2 px-3 py-1 rounded-sm border border-zinc-800 bg-zinc-900/50 text-[10px] font-mono font-medium text-zinc-400 uppercase tracking-widest mb-10">
                                     <Activity size={12} />
-                                    NEURAL_ANALYSIS_ENGINE_V2.0
+                                    ATS SCORING ALGORITHM V2.0
                                 </div>
-                                <h1 className="text-[clamp(4rem,10vw,8rem)] font-black leading-[0.85] tracking-tighter mb-8">
-                                    <span className="text-white block">RESUME</span>
-                                    <span className="text-zinc-700 block drop-shadow-md">INTELLIGENCE</span>
+                                <h1 className="text-[clamp(4rem,10vw,8rem)] font-serif italic font-medium leading-[0.85] tracking-tight mb-8 text-white">
+                                    Resume<br />
+                                    <span className="text-zinc-500 font-sans not-italic font-black tracking-tighter uppercase text-[clamp(3.5rem,8vw,7rem)] block mt-2">
+                                        Intelligence
+                                    </span>
                                 </h1>
-                                <p className="text-zinc-500 font-mono text-xs md:text-sm tracking-[0.2em] leading-relaxed max-w-xl uppercase">
-                                    INITIATE HIGH-FIDELITY DATA EXTRACTION FOR DEEP-TIER SEMANTIC
-                                    EVALUATION OF PROFESSIONAL IMPACT, NARRATIVE CLARITY, AND
-                                    CROSS-SYSTEM COMPATIBILITY.
+                                <p className="text-zinc-400 font-sans text-sm md:text-base leading-relaxed max-w-xl">
+                                    An elite semantic evaluation engine that dissects your professional narrative
+                                    across formatting, impact, and cross-system compatibility.
                                 </p>
                             </div>
 
@@ -104,11 +105,11 @@ export default function Home() {
                                 />
 
                                 {error && (
-                                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="w-full industrial-border border-red-500/30 bg-red-500/5 p-4 md:p-6 rounded-lg mt-6 flex items-start gap-4">
+                                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="w-full editorial-border bg-red-950/20 p-4 md:p-6 mt-6 flex items-start gap-4">
                                         <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                                         <div className="flex flex-col">
-                                            <span className="font-mono text-xs text-red-500 font-bold uppercase tracking-widest mb-1">Encryption_Error</span>
-                                            <span className="font-mono text-[10px] md:text-xs text-red-400/80 uppercase tracking-wider">{error}</span>
+                                            <span className="font-mono text-xs text-red-500 font-bold uppercase tracking-widest mb-1">Parsing Error</span>
+                                            <span className="font-sans text-sm text-red-400/80">{error}</span>
                                         </div>
                                     </motion.div>
                                 )}
@@ -117,18 +118,18 @@ export default function Home() {
                                     <button
                                         onClick={handleUpload}
                                         disabled={!file || isLoading}
-                                        className="relative overflow-hidden group border border-zinc-800 hover:border-zinc-500 text-zinc-400 hover:text-white px-6 py-3 bg-black/40 rounded font-mono text-[10px] tracking-[0.3em] uppercase disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-[0_0_40px_rgba(0,0,0,0.2)]"
+                                        className="relative overflow-hidden group border border-zinc-800 hover:border-white text-zinc-300 hover:text-black hover:bg-white px-8 py-4 bg-zinc-950 rounded-sm font-sans font-medium text-sm tracking-wide disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
                                     >
                                         <span className="relative z-10 flex items-center gap-3">
                                             {isLoading ? (
                                                 <>
-                                                    <Loader2 className="w-3 h-3 animate-spin text-lime-400" />
-                                                    EXECUTING_EVALUATION
+                                                    <Loader2 className="w-4 h-4 animate-spin text-zinc-400 group-hover:text-zinc-600" />
+                                                    Evaluating...
                                                 </>
                                             ) : (
                                                 <>
-                                                    <FlaskConical className="w-3 h-3 text-emerald-500 group-hover:text-emerald-400 transition-colors" />
-                                                    INITIATE_COMMAND
+                                                    Run Analysis
+                                                    <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                                 </>
                                             )}
                                         </span>
@@ -147,20 +148,19 @@ export default function Home() {
                             {/* Results Header */}
                             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-zinc-900">
                                 <div>
-                                    <div className="flex items-center gap-2 font-mono text-[10px] text-emerald-500 tracking-widest uppercase mb-4">
+                                    <div className="flex items-center gap-2 font-mono text-[10px] text-zinc-500 tracking-widest uppercase mb-4">
                                         <Terminal className="w-3 h-3" />
-                                        {">_ EVALUATION_LOG // ENTRY_SUCCESS"}
+                                        ATS REPORT GENERATED
                                     </div>
-                                    <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter">
-                                        SYSTEM_DIAGNOSTICS
+                                    <h2 className="text-4xl md:text-5xl font-serif italic text-white tracking-tight">
+                                        Evaluation <span className="font-sans font-black not-italic tracking-tighter">Results</span>
                                     </h2>
                                 </div>
                                 <button
                                     onClick={() => { setResult(null); setFile(null); setError(null); }}
-                                    className="flex items-center gap-2 font-mono text-[10px] md:text-xs text-zinc-500 hover:text-zinc-300 border border-zinc-800/80 hover:border-zinc-700 bg-black/40 rounded px-5 py-2.5 transition-colors uppercase tracking-[0.2em]"
+                                    className="flex items-center gap-2 font-sans text-xs font-medium text-zinc-400 hover:text-white border border-zinc-800 hover:border-zinc-500 bg-zinc-950 rounded-sm px-6 py-3 transition-colors"
                                 >
-                                    <Cpu className="w-3 h-3 text-zinc-600" />
-                                    INITIALIZE_NEW_SCAN
+                                    Upload New Resume
                                 </button>
                             </div>
 
