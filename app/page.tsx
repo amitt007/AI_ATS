@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { AlertCircle, ChevronRight, Loader2 } from "lucide-react";
+import { FlaskConical, Terminal, Activity, Loader2, Cpu, AlertCircle, ChevronRight } from "lucide-react";
 import { FileUpload } from "./components/FileUpload";
 import { ScoreCard } from "./components/ScoreCard";
 import { FeedbackList } from "./components/FeedbackList";
@@ -149,10 +149,10 @@ export default function Home() {
                             />
 
                             <FeedbackList
-                                positives={result.positives}
-                                tips={result.feedback_tips}
-                                missing={result.missing_keywords_or_sections}
-                                improvements={result.suggested_improvements}
+                                positives={result.positives || []}
+                                tips={result.feedback_tips || []}
+                                missing={result.missing_keywords_or_sections || []}
+                                improvements={result.suggested_improvements || []}
                             />
                         </motion.div>
                     )}
