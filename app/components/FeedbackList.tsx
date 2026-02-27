@@ -61,12 +61,12 @@ export const FeedbackList = ({ positives, tips, missing, improvements, score }: 
                     {/* Strengths Identified */}
                     {positives && positives.length > 0 ? (
                         <div className="editorial-border rounded p-8 bg-card-dark">
-                            <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#00ff41]/10">
-                                <h3 className="font-mono text-xs text-[#00ff41] uppercase tracking-[0.4em] text-glow-green flex items-center gap-2">
-                                    <Activity className="w-3.5 h-3.5" />
-                                    System_Positives
+                            <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-[#00ff41]/10">
+                                <h3 className="font-mono text-[10px] sm:text-xs text-[#00ff41] uppercase tracking-[0.2em] sm:tracking-[0.4em] text-glow-green flex items-center gap-2 min-w-0">
+                                    <Activity className="w-3.5 h-3.5 shrink-0" />
+                                    <span className="truncate">System_Positives</span>
                                 </h3>
-                                <span className="font-mono text-[8px] text-[#00ff41]/40 uppercase tracking-widest">NODE_0x1A</span>
+                                <span className="font-mono text-[8px] text-[#00ff41]/40 uppercase tracking-widest shrink-0">NODE_0x1A</span>
                             </div>
                             <ul className="space-y-6">
                                 {positives.map((item, i) => (
@@ -86,16 +86,16 @@ export const FeedbackList = ({ positives, tips, missing, improvements, score }: 
                     {/* Missing Critical Keywords */}
                     {missing && missing.length > 0 ? (
                         <div className="editorial-border rounded p-8 bg-card-dark">
-                            <div className="flex items-center justify-between mb-8 pb-4 border-b border-amber-500/10">
-                                <h3 className="font-mono text-xs text-amber-500 uppercase tracking-[0.4em] text-glow-orange flex items-center gap-2">
-                                    <Layers className="w-3.5 h-3.5" />
-                                    Missing_Data_Clusters
+                            <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-amber-500/10">
+                                <h3 className="font-mono text-[10px] sm:text-xs text-amber-500 uppercase tracking-[0.2em] sm:tracking-[0.4em] text-glow-orange flex items-center gap-2 min-w-0">
+                                    <Layers className="w-3.5 h-3.5 shrink-0" />
+                                    <span className="truncate">Missing_Data_Clusters</span>
                                 </h3>
-                                <span className="font-mono text-[8px] text-[#00ff41]/40 uppercase tracking-widest">NODE_0x2B</span>
+                                <span className="font-mono text-[8px] text-[#00ff41]/40 uppercase tracking-widest shrink-0">NODE_0x2B</span>
                             </div>
                             <div className="flex flex-wrap gap-2.5">
                                 {missing.map((item, i) => (
-                                    <div key={i} className="px-4 py-2 bg-black border border-zinc-700 rounded-sm font-mono text-[9px] uppercase tracking-[0.2em] text-[#00ff41]/50 hover:text-amber-500/80 hover:border-amber-500/30 transition-colors">
+                                    <div key={i} className="px-4 py-2 bg-black border border-[#00ff41]/20 rounded-sm font-mono text-[9px] uppercase tracking-[0.2em] text-[#00ff41]/50 hover:text-amber-500/80 hover:border-amber-500/30 transition-colors">
                                         {item}
                                     </div>
                                 ))}
@@ -109,12 +109,12 @@ export const FeedbackList = ({ positives, tips, missing, improvements, score }: 
                     {/* Formatting & Style */}
                     {tips && tips.length > 0 && (
                         <div className="editorial-border rounded p-8 bg-card-dark">
-                            <div className="flex items-center justify-between mb-8 pb-4 border-b border-cyan-500/10">
-                                <h3 className="font-mono text-xs text-cyan-500 uppercase tracking-[0.4em] text-glow-cyan flex items-center gap-2">
-                                    <Activity className="w-3.5 h-3.5 rotate-90" />
-                                    Format_Styling
+                            <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-cyan-500/10">
+                                <h3 className="font-mono text-[10px] sm:text-xs text-cyan-500 uppercase tracking-[0.2em] sm:tracking-[0.4em] text-glow-cyan flex items-center gap-2 min-w-0">
+                                    <Activity className="w-3.5 h-3.5 rotate-90 shrink-0" />
+                                    <span className="truncate">Format_Styling</span>
                                 </h3>
-                                <span className="font-mono text-[8px] text-[#00ff41]/40 uppercase tracking-widest">NODE_0x1B</span>
+                                <span className="font-mono text-[8px] text-[#00ff41]/40 uppercase tracking-widest shrink-0">NODE_0x1B</span>
                             </div>
                             <ul className="space-y-6">
                                 {tips.map((item, i) => (
@@ -137,12 +137,12 @@ export const FeedbackList = ({ positives, tips, missing, improvements, score }: 
             {/* Bottom Section: Rewrite Recommendations */}
             {improvements && improvements.length > 0 && (
                 <motion.div variants={itemVariant} className="editorial-border rounded p-8 bg-card-dark mt-12">
-                    <div className="flex items-center justify-between mb-10 pb-4 border-b border-[#00ff41]/20">
-                        <h3 className="font-mono text-xs text-[#00ff41]/50 uppercase tracking-[0.4em] text-glow-green flex items-center gap-3">
-                            <span className="text-[#00ff41] font-bold">&gt;_</span>
-                            Semantic_Override_Proposals
+                    <div className="flex flex-wrap items-center justify-between gap-4 mb-10 pb-4 border-b border-[#00ff41]/20">
+                        <h3 className="font-mono text-[10px] sm:text-xs text-[#00ff41]/50 uppercase tracking-[0.2em] sm:tracking-[0.4em] text-glow-green flex items-center gap-3 min-w-0">
+                            <span className="text-[#00ff41] font-bold shrink-0">&gt;_</span>
+                            <span className="truncate">Semantic_Override_Proposals</span>
                         </h3>
-                        <span className="font-mono text-[8px] text-[#00ff41]/40 uppercase tracking-widest">LAYER_SC-03</span>
+                        <span className="font-mono text-[8px] text-[#00ff41]/40 uppercase tracking-widest shrink-0">LAYER_SC-03</span>
                     </div>
 
                     <div className="space-y-6">
