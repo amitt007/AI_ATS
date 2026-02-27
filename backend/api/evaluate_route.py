@@ -26,6 +26,10 @@ async def evaluate(file: UploadFile = File(...)):
         if not text.strip():
              raise HTTPException(status_code=400, detail="Could not extract text from this PDF.")
         
+        # Hard limit on text length to prevent AI processing of excessive data (approx 15-20 pages)
+        if len(text) > 50000: 
+             raise HTTPException(status_code=400, detail="Resume content is too long. Please provide a more concise document.")
+        
         # 2. Evaluate with AI
         evaluation = evaluate_resume(text)
         
@@ -41,4 +45,10 @@ async def evaluate(file: UploadFile = File(...)):
     except HTTPException:
         raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        # Log the actual error for internal tracking (Vercel logs)
+        print(f"CRITICAL ERROR in /evaluate: {str(e)}")
+        # Return a generic message to the user
+        raise HTTPException(
+            status_code=500, 
+            detail="An error occurred while processing your resume. Please ensure the file is not corrupted and try again."
+        )
