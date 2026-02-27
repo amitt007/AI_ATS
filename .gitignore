@@ -22,3 +22,6 @@ Thumbs.db
 node_modules/
 backend/venv/
 backend/__pycache__/
+
+.next
+.next/

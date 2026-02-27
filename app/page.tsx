@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FlaskConical, Terminal, Activity, Loader2, Cpu, AlertCircle, ChevronRight } from "lucide-react";
+import { FileText, Upload, AlertCircle, Loader2, CheckCircle2, ChevronRight, ChevronLeft, Activity, Target, Zap, Layout, ArrowRight, RefreshCw, Cpu, Database, Network } from "lucide-react";
 import { FileUpload } from "./components/FileUpload";
 import { ScoreCard } from "./components/ScoreCard";
 import { FeedbackList } from "./components/FeedbackList";
@@ -42,6 +42,35 @@ export default function Home() {
         setIsLoading(true);
         setError(null);
 
+        // Injecting mock data for UI verification as requested
+        setTimeout(() => {
+            setResult({
+                score: 85,
+                impact_index: 8.2,
+                match_percentage: 88,
+                overall_feedback: "STRONG_MATCH // Systematic alignment detected in structural narrative and core competency mapping.",
+                positives: ["Technical Leadership", "System Architecture", "React/Next.js Expert"],
+                missing_keywords_or_sections: ["Cloud Security", "Distributed Systems", "gRPC"],
+                feedback_tips: ["Enhance impact metrics", "Normalize font hierarchy", "Remove redundant bio"],
+                suggested_improvements: [
+                    {
+                        original_text: "Led the development of a large web application.",
+                        suggested_rewrite: "Architected and delivered a high-scale React system, improving performance by 40% using modern state management.",
+                        reasoning: "QUANTIFIABLE_METRIC_INJECTION // System performance gains should be explicitly stated to establish technical authority.",
+                        potential_score_increase: 12
+                    },
+                    {
+                        original_text: "Helped team with code reviews.",
+                        suggested_rewrite: "Governed codebase integrity through rigorous multi-agent design reviews and automated CI/CD validation protocols.",
+                        reasoning: "NARRATIVE_ELEVATION // Standard operational tasks transformed into governance protocols.",
+                        potential_score_increase: 8
+                    }
+                ]
+            });
+            setIsLoading(false);
+        }, 1500);
+
+        /* Original API Call - Commented out for verification
         const formData = new FormData();
         formData.append("file", file);
 
@@ -62,11 +91,12 @@ export default function Home() {
         } finally {
             setIsLoading(false);
         }
+        */
     };
 
     return (
-        <main className="min-h-screen bg-editorial-dark font-sans selection:bg-white selection:text-black">
-            <div className="max-w-7xl mx-auto px-6 py-20 pb-40">
+        <main className="min-h-screen bg-black font-sans selection:bg-white selection:text-black">
+            <div className="max-w-7xl mx-auto px-6 py-10 pb-40">
                 <AnimatePresence mode="wait">
                     {!result ? (
                         <motion.div
@@ -75,68 +105,68 @@ export default function Home() {
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
                             transition={{ duration: 0.4 }}
-                            className="relative min-h-[70vh] pt-12 lg:pt-20"
+                            className="relative min-h-[70vh] pt-4 lg:pt-8"
                         >
-                            {/* Left Column: Typography */}
-                            <div className="flex flex-col justify-center">
-                                <div className="inline-flex w-max items-center gap-2 px-3 py-1 rounded-sm border border-zinc-800 bg-zinc-900/50 text-[10px] font-mono font-medium text-zinc-400 uppercase tracking-widest mb-10">
-                                    <Activity size={12} />
-                                    ATS SCORING ALGORITHM V2.0
+                            {/* Hero Section */}
+                            <div className="flex flex-col items-start max-w-7xl text-left">
+                                <div className="inline-flex w-max items-center gap-2 px-0 py-1 text-[9px] font-mono font-bold text-[#00ff41] uppercase tracking-[0.3em] mb-12">
+                                    <Activity size={12} className="active-glow-green" />
+                                    NEURAL_ANALYSIS_ENGINE_V2.0
                                 </div>
-                                <h1 className="text-[clamp(4rem,10vw,8rem)] font-serif italic font-medium leading-[0.85] tracking-tight mb-8 text-white relative z-0">
-                                    Resume<br />
-                                    <span className="text-zinc-600 font-sans not-italic font-black tracking-tighter uppercase text-[clamp(3.5rem,14vw,11rem)] block mt-2 lg:-ml-2">
-                                        Intelligence
-                                    </span>
-                                </h1>
-                            </div>
 
-                            <div className="flex flex-col lg:flex-row justify-between items-end gap-12 relative z-10 w-full mt-12 lg:-mt-24 xl:-mt-32 pointer-events-none">
-                                <div className="w-full lg:w-1/2 pointer-events-auto">
-                                    <p className="text-zinc-400 font-sans text-sm md:text-base leading-relaxed max-w-md">
-                                        An elite semantic evaluation engine that dissects your professional narrative
-                                        across formatting, impact, and cross-system compatibility.
+                                <div className="space-y-2 mb-12">
+                                    <h1 className="text-[clamp(3.5rem,10vw,7rem)] font-sans font-black leading-[0.8] tracking-tighter text-[#00ff41] uppercase text-glow-green">
+                                        Resume
+                                    </h1>
+                                    <h1 className="text-[clamp(3.5rem,10vw,7rem)] font-sans font-black leading-[0.8] tracking-tighter text-[#00ff41]/10 uppercase">
+                                        Intelligence
+                                    </h1>
+                                </div>
+
+                                <div className="max-w-xl mb-20">
+                                    <p className="text-[#00ff41]/40 font-mono text-[10px] tracking-[0.2em] uppercase leading-relaxed text-left">
+                                        Initiate high-fidelity data extraction for deep-tier semantic evaluation of professional impact, narrative clarity, and cross-system compatibility.
                                     </p>
                                 </div>
 
-                                {/* Right Column: Upload Box */}
-                                <div className="w-full lg:w-[480px] xl:w-[540px] flex flex-col shrink-0 pointer-events-auto">
-                                    <FileUpload
-                                        file={file}
-                                        onDrop={handleDrop}
-                                        onFileSelect={handleFileSelect}
-                                        maxSize={MAX_FILE_SIZE}
-                                    />
+                                {/* Upload Section */}
+                                <div className="w-full max-w-2xl flex flex-col items-end gap-12 ml-auto mt-20">
+                                    <div className="w-full">
+                                        <FileUpload
+                                            file={file}
+                                            onDrop={handleDrop}
+                                            onFileSelect={handleFileSelect}
+                                            maxSize={MAX_FILE_SIZE}
+                                        />
 
-                                    {error && (
-                                        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="w-full editorial-border bg-red-950/20 p-4 md:p-6 mt-6 flex items-start gap-4">
-                                            <AlertCircle className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
-                                            <div className="flex flex-col">
-                                                <span className="font-mono text-xs text-red-500 font-bold uppercase tracking-widest mb-1">Parsing Error</span>
-                                                <span className="font-sans text-sm text-red-400/80">{error}</span>
-                                            </div>
-                                        </motion.div>
-                                    )}
+                                        {error && (
+                                            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="w-full bg-red-950/20 border-r-2 border-red-500 p-4 mt-6 text-right">
+                                                <div className="flex items-center justify-end gap-3">
+                                                    <span className="font-mono text-[9px] text-red-500 font-bold uppercase tracking-widest">Protocol_Error // {error}</span>
+                                                    <AlertCircle className="w-4 h-4 text-red-500" />
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </div>
 
-                                    <div className="mt-8 flex justify-end">
+                                    <div className="flex justify-end w-full">
                                         <button
                                             onClick={handleUpload}
                                             disabled={!file || isLoading}
-                                            className="relative overflow-hidden group border border-zinc-800 hover:border-white text-zinc-300 hover:text-black hover:bg-white px-8 py-4 bg-zinc-950 rounded-sm font-sans font-medium text-sm tracking-wide disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+                                            className="group relative editorial-corners p-5 md:p-6 transition-all duration-500 bg-black/40 disabled:opacity-30 disabled:cursor-not-allowed"
                                         >
-                                            <span className="relative z-10 flex items-center gap-3">
-                                                {isLoading ? (
-                                                    <>
-                                                        <Loader2 className="w-4 h-4 animate-spin text-zinc-400 group-hover:text-zinc-600" />
-                                                        Evaluating...
-                                                    </>
-                                                ) : (
-                                                    <>
-                                                        Run Analysis
-                                                        <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                                    </>
-                                                )}
-                                            </span>
+                                            <div className="relative z-10 flex items-center gap-6 px-4">
+                                                <div className="flex items-center">
+                                                    {isLoading ? (
+                                                        <Loader2 className="w-4 h-4 animate-spin text-[#00ff41]" />
+                                                    ) : (
+                                                        <ChevronLeft className="w-4 h-4 text-[#00ff41]/30 group-hover:text-[#00ff41]/80 group-hover:active-glow-green transition-all duration-500" />
+                                                    )}
+                                                </div>
+                                                <span className="text-[#00ff41]/50 group-hover:text-[#00ff41]/80 font-mono font-bold text-[11px] tracking-[0.4em] uppercase group-hover:text-glow-green transition-all duration-500">
+                                                    {isLoading ? "Processing_Payload..." : "Execute_Analysis"}
+                                                </span>
+                                            </div>
                                         </button>
                                     </div>
                                 </div>
@@ -150,22 +180,23 @@ export default function Home() {
                             transition={{ duration: 0.5, staggerChildren: 0.1 }}
                             className="flex flex-col space-y-12"
                         >
-                            {/* Results Header */}
-                            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-zinc-900">
-                                <div>
-                                    <div className="flex items-center gap-2 font-mono text-[10px] text-zinc-500 tracking-widest uppercase mb-4">
-                                        <Terminal className="w-3 h-3" />
-                                        ATS REPORT GENERATED
+                            {/* Results Header: Mirroring SYSTEM_DIAGNOSTICS style */}
+                            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-10 border-b border-[#00ff41]/20">
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-3 font-mono text-[9px] text-[#00ff41]/50 tracking-[0.3em] uppercase">
+                                        <span className="text-[#00ff41] font-bold active-glow-green">&gt;_</span>
+                                        EVALUATION_LOG // ENTRY_SUCCESS
                                     </div>
-                                    <h2 className="text-4xl md:text-5xl font-serif italic text-white tracking-tight">
-                                        Evaluation <span className="font-sans font-black not-italic tracking-tighter">Results</span>
+                                    <h2 className="text-5xl md:text-6xl font-sans font-black uppercase tracking-tighter text-[#00ff41] text-glow-green">
+                                        Evaluation Result
                                     </h2>
                                 </div>
                                 <button
                                     onClick={() => { setResult(null); setFile(null); setError(null); }}
-                                    className="flex items-center gap-2 font-sans text-xs font-medium text-zinc-400 hover:text-white border border-zinc-800 hover:border-zinc-500 bg-zinc-950 rounded-sm px-6 py-3 transition-colors"
+                                    className="group flex items-center gap-3 font-mono text-[10px] font-bold text-[#00ff41]/60 hover:text-[#00ff41]/80 border border-zinc-700 hover:border-[#00ff41]/60 bg-white/0 hover:bg-[#08100A] rounded-sm px-8 py-4 transition-all tracking-[0.2em] uppercase"
                                 >
-                                    Upload New Resume
+                                    <Activity size={14} className="group-hover:rotate-180 transition-transform duration-500" />
+                                    Initialize_New_Scan
                                 </button>
                             </div>
 

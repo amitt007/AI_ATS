@@ -10,33 +10,65 @@ interface ScoreCardProps {
 
 export const ScoreCard = ({ score, onAnalyzeAnother }: ScoreCardProps) => {
     return (
-        <div className="w-full editorial-border rounded bg-zinc-950 p-8 md:p-10 relative overflow-hidden group flex flex-col items-center justify-center text-center shadow-2xl">
+        <div className="w-full h-full editorial-border rounded bg-black p-8 flex flex-col relative overflow-hidden group shadow-2xl justify-between">
 
-            {/* Main Score Display */}
-            <div className="py-8">
-                <span className="font-mono text-[10px] tracking-[0.3em] text-zinc-500 uppercase mb-4 block">
-                    ATS Impact Index
-                </span>
-                <div className="relative">
-                    <h2 className="text-[140px] md:text-[160px] font-serif italic font-medium leading-none text-white tracking-tighter select-none">
-                        {score}
-                    </h2>
+            {/* Top labels */}
+            <div className="flex justify-between items-center w-full mb-12">
+                <div className="flex items-center gap-2 text-[#00ff41]/50 font-mono text-[10px] uppercase tracking-widest">
+                    <Activity className="w-3 h-3 text-[#00ff41]/60 flex-shrink-0" />
+                    <span className="hidden sm:inline-block truncate">Neural_Impact_Oscilloscope</span>
+                    <span className="sm:hidden">Oscilloscope</span>
+                </div>
+                <div className="border border-zinc-700 px-2 py-0.5 rounded-sm text-[#00ff41]/40 font-mono text-[9px] uppercase tracking-widest flex-shrink-0">
+                    SEQ ID: RES-0042
                 </div>
             </div>
 
-            {/* Metadata / Action */}
-            <div className="mt-auto pt-8 flex flex-col items-center gap-4 w-full">
-                <p className="font-sans text-xs text-zinc-400">
-                    Analysis complete. Score is based on semantic parsing and industry-standard heuristic matching.
-                </p>
-                <button
-                    onClick={onAnalyzeAnother}
-                    className="mt-4 border border-zinc-800 hover:border-white text-zinc-300 hover:text-black hover:bg-white px-6 py-3 rounded-sm font-sans font-medium text-xs tracking-wide transition-all duration-300"
-                >
-                    Evaluate Another Resume
-                </button>
+            {/* Main Score Display */}
+            <div className="flex flex-col items-center justify-center my-auto py-8">
+                <h2 className="text-[140px] md:text-[160px] lg:text-[180px] font-serif italic font-medium leading-[0.75] text-[#00ff41] tracking-tighter select-none">
+                    {score}
+                </h2>
+                <span className="font-mono text-[11px] tracking-[0.4em] text-[#00ff41]/50 uppercase mt-8 md:mt-12">
+                    I M P A C T _ I N D E X
+                </span>
             </div>
 
+            {/* Bottom Section */}
+            <div className="pt-12 w-full flex flex-col gap-4 mt-auto">
+                <div className="flex justify-between items-center font-mono text-[9px] uppercase tracking-widest">
+                    <div className="flex items-center gap-2 text-[#00ff41]/50">
+                        <Activity className="w-3 h-3" />
+                        <span>System_Calibration</span>
+                    </div>
+                    <span className="text-[#ffffff] font-bold">Adequate</span>
+                </div>
+
+                {/* Progress Bar */}
+                <div className="h-5 w-full border border-zinc-700 bg-black p-0.5 rounded-sm flex gap-0.5">
+                    <motion.div
+                        initial={{ width: 0 }}
+                        animate={{ width: `${score}%` }}
+                        transition={{ duration: 1.5, ease: "easeOut" }}
+                        className="h-full bg-gradient-to-r from-[#00ff41]/40 to-[#ffffff]"
+                    />
+                    {Array.from({ length: 6 }).map((_, i) => (
+                        <div key={i} className="h-full w-px bg-black ml-auto" />
+                    ))}
+                </div>
+
+                <div className="flex justify-between items-start mt-2">
+                    <div className="flex flex-col">
+                        <span className="font-mono text-[9px] text-[#00ff41]/40 uppercase tracking-widest mb-1">Confidence</span>
+                        <span className="font-mono text-[10px] text-[#00ff41]/80 uppercase tracking-widest">98.42%_Calibrated</span>
+                    </div>
+                    <div className="flex flex-col text-right">
+                        <span className="font-mono text-[9px] text-[#00ff41]/40 uppercase tracking-widest mb-1">Latency</span>
+                        <span className="font-mono text-[10px] text-[#00ff41]/80 uppercase tracking-widest">42ms_Processed</span>
+                    </div>
+                </div>
+
+            </div>
         </div>
     );
 };
