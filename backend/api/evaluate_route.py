@@ -1,6 +1,6 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
-from services.agent import extract_text_from_pdf, evaluate_resume
-from core.database import save_evaluation
+from backend.services.agent import extract_text_from_pdf, evaluate_resume
+from backend.core.database import save_evaluation
 
 router = APIRouter()
 

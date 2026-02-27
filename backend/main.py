@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # We import the router after load_dotenv so that variables are available.
-from api.evaluate_route import router as evaluate_router
+from backend.api.evaluate_route import router as evaluate_router
 
 app = FastAPI(title="AI ATS Resume Scorer")
 
